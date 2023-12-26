@@ -46,9 +46,11 @@
   gap: 10px;
   border: solid 2px;
   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 30px;
   align-items: center;
-  transition: 0.2s;
+  transition: 0.5s;
   cursor: pointer;
 }
 
@@ -58,13 +60,18 @@
   transition: 0.2s;
 }
 .login:hover {
-  background-color: black;
+  background: rgb(0, 136, 124);
+  background: linear-gradient(
+    86deg,
+    rgba(0, 136, 124, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
   box-shadow: rgb(161, 161, 161) 10px 10px 20px;
   border-color: var(--green);
   color: white;
 }
 .login:hover img {
-  filter: brightness(10);
+  filter: brightness(2);
 }
 
 .navSelected {
