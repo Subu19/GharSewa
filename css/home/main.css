@@ -1,0 +1,112 @@
+@import url("../colors.css");
+@import url("./navbar.css");
+@import url("./home.css");
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: calc(100% - 20px);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.wave1 {
+  position: absolute;
+  top: 0px;
+  z-index: -10;
+  width: 100%;
+}
+.textright {
+  text-align: right;
+}
+.textcenter {
+  text-align: center;
+}
+
+.fade-up {
+  transform: translateY(100px);
+  opacity: 0;
+  scale: 0.9;
+  transition: 0.5s ease-out;
+}
+.fade-up-scrolled {
+  transform: translateY(0px);
+  opacity: 1;
+  scale: 1;
+}
+.fade-left {
+  transform: translateX(100px);
+  opacity: 0;
+  scale: 0.9;
+  transition: 0.5s ease-out;
+}
+.fade-left-scrolled {
+  transform: translateX(0px);
+  opacity: 1;
+  scale: 1;
+}
+.fade-right {
+  transform: translateX(-100px);
+  opacity: 0;
+  scale: 0.9;
+  transition: 0.5s ease-out;
+}
+.fade-right-scrolled {
+  transform: translateX(0px);
+  opacity: 1;
+  scale: 1;
+}
+@keyframes faderight {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeleft {
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadedown {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes fadeup {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
