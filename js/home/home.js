@@ -38,6 +38,61 @@ function checkScroll() {
 }
 checkScroll();
 
+////////////////////////////////// count /////////////////////////
+
+const handyManCount = document.getElementById("handyman-count");
+const customerCount = document.getElementById("customer-count");
+
+var hCounted = false;
+var cCounted = false;
+function countHandyMan() {
+  if (!hCounted) {
+    hCounted = true;
+    const hCount = new count(50, handyManCount);
+    hCount.start();
+  }
+}
+function countCustomers() {
+  if (!cCounted) {
+    cCounted = true;
+    const hCount = new count(2569, customerCount);
+    hCount.start();
+  }
+}
+
+class count {
+  constructor(final, element) {
+    this.initial = 0;
+    this.final = final;
+    this.current = 0;
+    this.element = element;
+    this.increment = this.final / 100;
+  }
+
+  start() {
+    this.interval = setInterval(() => {
+      console.log("counting");
+      if (this.current < this.final) {
+        this.current += this.increment;
+
+        this.element.innerHTML = `${Math.round(this.current)}`;
+      } else {
+        clearInterval(this.interval);
+      }
+    }, 10);
+  }
+}
+
+function checkCounts() {
+  if (!isElementOutOfView(handyManCount)) {
+    countHandyMan();
+    countCustomers();
+  } else {
+    cCounted = false;
+    hCounted = false;
+  }
+}
+
 //////////////////////////////////// animation ///////////////////////////
 const fadeUpElements = document.querySelectorAll(".fade-up");
 const fadeLeftElements = document.querySelectorAll(".fade-left");
@@ -97,6 +152,7 @@ function checkFadeAnimcation() {
 
 document.addEventListener("scroll", (e) => {
   checkFadeAnimcation();
+  checkCounts();
 });
 
 checkFadeAnimcation();
