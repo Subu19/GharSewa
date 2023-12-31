@@ -218,15 +218,33 @@
   background-color: rgb(255, 255, 255);
   /* overflow: hidden; */
   border-bottom-left-radius: 50px;
-  border-color: black;
   border-top-style: solid;
   border-width: 3px;
   box-shadow: rgb(223, 223, 223) 10px 0px 40px;
+}
+.service:nth-child(1) {
+  border-color: rgb(255, 156, 156);
+}
+.service:nth-child(2) {
+  border-color: rgb(225, 216, 44);
+}
+.service:nth-child(3) {
+  border-color: rgb(44, 225, 216);
+}
+.service:nth-child(4) {
+  border-color: rgb(131, 44, 225);
+}
+.service:nth-child(5) {
+  border-color: rgb(44, 225, 80);
+}
+.service:nth-child(6) {
+  border-color: rgb(239, 121, 186);
 }
 .service-icon {
   display: flex;
   justify-content: right;
   width: 100%;
+  margin-top: 20px;
 }
 .service .icon {
   height: 100px;
