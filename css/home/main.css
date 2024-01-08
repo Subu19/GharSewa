@@ -60,6 +60,9 @@ body {
   opacity: 1;
   scale: 1;
 }
+.green {
+  color: var(--green);
+}
 @keyframes faderight {
   0% {
     transform: translateX(-50%);

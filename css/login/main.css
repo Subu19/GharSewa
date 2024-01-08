@@ -1,0 +1,92 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+}
+.main {
+  display: flex;
+  height: 100%;
+}
+.left {
+  flex: 1;
+  /* padding: 30px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right {
+  flex: 1;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  font-size: 30px;
+  font-weight: bold;
+}
+.subHeading {
+  font-size: 20px;
+}
+.input {
+  height: 20px;
+  width: auto;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 18px;
+}
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.btn {
+  height: 40px;
+  width: auto;
+  flex: 1;
+  margin-top: 30px;
+  background-color: var(--blue);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-none {
+  flex: 1;
+  height: 40px;
+  width: auto;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-decoration: underline;
+  color: var(--black);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bold {
+  font-weight: bold;
+}
+.margin50 {
+  margin-top: 50px;
+}
+.bigLogo {
+  width: 100%;
+}

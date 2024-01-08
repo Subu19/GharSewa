@@ -104,6 +104,7 @@ function isElementOutOfView(element) {
     (window.innerHeight - 100 || document.documentElement.clientHeight - 100)
   );
 }
+
 function displayFadeUpElement(element) {
   element.classList.add("fade-up-scrolled");
 }
