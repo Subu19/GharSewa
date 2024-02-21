@@ -26,7 +26,10 @@ body {
 .textcenter {
   text-align: center;
 }
-
+a {
+  text-decoration: none;
+  color: blac;
+}
 .fade-up {
   transform: translateY(100px);
   opacity: 0;
