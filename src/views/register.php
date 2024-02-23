@@ -15,7 +15,7 @@
         <div class="nav">
             <img src="assets/svgs/logoWide.svg" class="logo" alt="">
         </div>
-        <form action="/register" method="post" onsubmit="return validateForm()">
+        <form action="/postregister" method="post" onsubmit="return validateForm()">
             <div class="formTitle break">Register Your New Account</div>
 
             <input type="text" name="firstname" id="firstname" class="input" placeholder="First Name" required />
