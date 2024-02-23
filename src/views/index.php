@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ghar Swea</title>
+  <title>Ghar Sewa</title>
   <link rel="icon" type="image/x-icon" href="/assets/svgs/logo.ico" />
   <link rel="stylesheet" href="src/css/home/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
