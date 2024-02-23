@@ -3,7 +3,8 @@
 
 $routes = [
     "/" => "src/views/index.php",
-    "/login" => "src/views/login.php"
+    "/login" => "src/views/login.php",
+    "/register" => "src/views/register.php"
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

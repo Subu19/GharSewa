@@ -1,0 +1,46 @@
+.nav {
+  height: 70px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.logo {
+  height: 70%;
+  width: auto;
+}
+.input {
+  height: 20px;
+  width: auto;
+  padding: 15px;
+  font-size: 18px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 100px;
+}
+.formTitle {
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: solid 4px rgb(225, 225, 225);
+  padding: 10px;
+  color: var(--black);
+}
+#previewImage {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+.btn {
+  height: 50px;
+  font-size: 18px;
+  padding: 15px;
+  background-color: var(--blue);
+}
+.btn-primary {
+  height: 50px;
+  font-size: 18px;
+  padding: 15px;
+}
