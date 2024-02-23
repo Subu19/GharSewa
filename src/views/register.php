@@ -15,11 +15,11 @@
         <div class="nav">
             <img src="assets/svgs/logoWide.svg" class="logo" alt="">
         </div>
-        <form action="/postregister" method="post" onsubmit="return validateForm()">
+        <form enctype="multipart/form-data" action="/postregister" method="post" onsubmit="return validateForm()">
             <div class="formTitle break">Register Your New Account</div>
 
             <input type="text" name="firstname" id="firstname" class="input" placeholder="First Name" required />
-            <input type="text" name="Last Name" id="lastname" class="input" placeholder="Last Name" required />
+            <input type="text" name="lastname" id="lastname" class="input" placeholder="Last Name" required />
             <input type="text" name="username" id="username" class="input" placeholder="Username" required />
 
             <div class="takespace"></div>
@@ -27,11 +27,9 @@
             <input type="number" name="phone" id="phone" class="input" placeholder="phone" required />
             <div class="takespace"></div>
 
-            <input type="text" name="address1" id="address1" class="input takespace" placeholder="Address 1 (Province and City you live in)" required />
-            <input type="text" name="address2" id="Address2" class="input takespace" placeholder="Address 2 (Street you live in)" />
+            <input type="text" name="address" id="address" class="input takespace" placeholder="Address" required />
 
-
-            <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
+            <input type="file" id="profilePicInput" name="profilePic" accept="image/*" hidden>
             <div class="profilePic">
                 <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 100px; max-height: 100px;">
                 <button class="btn" onclick="document.getElementById('profilePicInput').click(); return false;">Select Profile Picture</button>
@@ -46,7 +44,7 @@
                 <div id="vcapital">❌ At Least 1 capital letter</div>
             </div>
             <input type="password" id="confirmPassword" class="input" placeholder="Confirm Password" required />
-            <button class="btn-primary takespace">Register</button>
+            <button class="btn-primary takespace" type="submit">Register</button>
         </form>
     </div>
 

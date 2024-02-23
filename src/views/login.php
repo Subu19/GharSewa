@@ -12,14 +12,14 @@
 <body>
   <div class="main">
     <div class="left">
-      <form>
+      <form action="/postlogin" method="post">
         <div class="heading">Good to see you again!</div>
         <div class="subHeading">Login to continue</div>
         <input type="text" name="username" id="username" class="input" placeholder="username" />
         <input type="password" name="password" id="password" class="input" placeholder="password" />
         <div class="flex">
           <button type="submit" class="btn">Login</button>
-          <button class="btn btn-none">Forgot Password</button>
+          <button type="button" class="btn btn-none">Forgot Password</button>
         </div>
         <div class="flex column margin50">
           <div class="flex center bold">New Here?</div>

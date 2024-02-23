@@ -1,3 +1,27 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
+  // Redirect unauthorized users to the login page
+  header("location: /login");
+  exit();
+} else {
+
+  require_once("src/database/connect.php");
+
+  $userid = $_SESSION['user_id'];
+  $username = $_SESSION['username'];
+  $sql = "SELECT username,profilePic FROM user where user_id = :userid";
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindParam(":userid", $userid);
+  $statement->execute();
+
+  $user = $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +58,14 @@
         <div class="nav" id="aboutNav">About Us</div>
         <div class="user">
           <a class="login" href="/login">
-            <img src="./assets/images/default.png" alt="" />
-            <div>Login</div>
+            <?php if (isset($user)) : ?>
+              <img src="http://localhost:3000/<?php echo $user["profilePic"] ?>" alt="" />
+              <div><?php echo $user["username"] ?></div>
+            <?php else : ?>
+              <img src="./assets/images/default.png" alt="" />
+              <div>Login</div>
+            <?php endif; ?>
+
           </a>
         </div>
       </div>

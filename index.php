@@ -12,9 +12,23 @@ $routes = [
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
 
+if (strpos($uri, "/uploads/") === 0) {
+    // Serve the file directly
+    $filePath = __DIR__ . $uri;
+    if (file_exists($filePath) && is_file($filePath)) {
+        // Set appropriate headers
+        header('Content-Type: ' . mime_content_type($filePath));
+        header('Content-Length: ' . filesize($filePath));
+        // Output the file content
+        readfile($filePath);
+        exit(); // Stop further execution
+    } else {
+        // File not found, return 404
+        http_response_code(404);
+        echo "File not found";
+        exit(); // Stop further execution
+    }
+}
 if (array_key_exists($uri, $routes)) {
     require $routes[$uri];
-} else {
-   // include 'views/404.php';
-    http_response_code(404);
 }
