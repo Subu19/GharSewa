@@ -1,27 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
-  // Redirect unauthorized users to the login page
-  header("location: /login");
-  exit();
-} else {
-
-  require_once("src/database/connect.php");
-
-  $userid = $_SESSION['user_id'];
-  $username = $_SESSION['username'];
-  $sql = "SELECT username,profilePic FROM user where user_id = :userid";
-
-  $statement = $pdo->prepare($sql);
-  $statement->bindParam(":userid", $userid);
-  $statement->execute();
-
-  $user = $statement->fetch(PDO::FETCH_ASSOC);
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,54 +7,16 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
   <title>Ghar Sewa</title>
   <link rel="icon" type="image/x-icon" href="/assets/svgs/logo.ico" />
   <link rel="stylesheet" href="src/css/home/main.css" />
+  <link rel="stylesheet" href="src/css/navbar.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="mobileNavbar hideNavBar">
-    <div class="mobile-navs">
-      <div class="mobile-nav">Home</div>
-      <div class="mobile-nav">Services</div>
-      <div class="mobile-nav">Our Location</div>
-      <div class="mobile-nav">About Us</div>
-    </div>
-  </div>
   <img class="wave1" src="./assets/svgs/wave1.svg" alt="" />
-  <div class="navbar" id="navbar">
-    <div class="wrapper">
-      <div class="logoContainner">
-        <img class="logo" id="logo" src="./assets/svgs/logoWide.svg" alt="" />
-      </div>
-      <div class="navs">
-        <div class="nav" id="homeNav">Home</div>
-        <div class="nav" id="serviceNav">Services</div>
-        <div class="nav" id="locationNav">Our Locations</div>
-        <div class="nav" id="aboutNav">About Us</div>
-        <div class="user">
-          <a class="login" href="/login">
-            <?php if (isset($user)) : ?>
-              <img src="http://localhost:3000/<?php echo $user["profilePic"] ?>" alt="" />
-              <div><?php echo $user["username"] ?></div>
-            <?php else : ?>
-              <img src="./assets/images/default.png" alt="" />
-              <div>Login</div>
-            <?php endif; ?>
-
-          </a>
-        </div>
-      </div>
-      <div class="hamburger">
-        <input type="checkbox" class="checkbox" onclick="toggleNavBar()" />
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 11L44 11" stroke="black" stroke-width="4" stroke-linecap="round" class="lineTop line" />
-          <path class="lineMid line" d="M6 24H43" stroke="black" stroke-width="4" stroke-linecap="round" />
-          <path class="lineBottom line" d="M6 37H43" stroke="black" stroke-width="4" stroke-linecap="round" />
-        </svg>
-      </div>
-    </div>
-  </div>
+  <!-- include navbar  -->
+  <?php include "src/views/components/navbar.php" ?>
   <!-- //landing page  -->
   <div class="landingPage">
     <div class="wrapper">

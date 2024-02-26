@@ -7,6 +7,10 @@
   transition: 0.3s;
   animation: fadedown 1s ease-in-out;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 .whitenav {
   background-color: white;
   box-shadow: rgba(107, 107, 107, 0.226) 0px 5px 20px;
@@ -166,5 +170,8 @@
 @media only screen and (max-width: 800px) {
   .hamburger {
     display: block;
+  }
+  .navs {
+    display: none;
   }
 }

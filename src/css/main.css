@@ -1,10 +1,18 @@
 @import url("./colors.css");
+
 body {
   padding: 0px;
   margin: 0px;
   font-family: "Poppins", sans-serif;
 }
-
+.upperspace {
+  margin-top: 100px;
+}
+.textinput {
+  width: auto;
+  padding: 10px;
+  font-size: 18px;
+}
 .wrapper {
   margin: 0 auto;
   max-width: 1200px;
@@ -52,7 +60,22 @@ body {
 .break {
   flex: 0 0 100%;
 }
+.hcontainner {
+  display: flex;
+  gap: 20px;
+}
+.vcontainner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .takespace {
   flex-basis: 100%;
   height: 0;
+}
+.alignCenter {
+  align-items: center;
+}
+.radius-7 {
+  border-radius: 7px;
 }
