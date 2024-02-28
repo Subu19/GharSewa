@@ -101,7 +101,14 @@
   display: flex;
   gap: 5px;
   flex-direction: column;
+  transition: 0.2s;
 }
+.card:hover {
+  background-color: rgb(235, 235, 235);
+  cursor: pointer;
+  scale: 1.02;
+}
+
 .card-img {
   width: 100%;
   aspect-ratio: 5/3;

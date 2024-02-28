@@ -8,7 +8,9 @@ $routes = [
     "/postregister" => "src/controllers/auth/register.php",
     "/postlogin" => "src/controllers/auth/login.php",
     "/404" => "src/views/404.php",
-    "/services" => "src/views/services.php"
+    "/services" => "src/views/services.php",
+    "/apply" => "src/views/application.php",
+    "/postapply" => "src/controllers/post/application.php"
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

@@ -88,6 +88,18 @@ a {
   color: var(--green);
   padding-top: 10px;
 }
+.userContainner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navProfilePic {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border-color: var(--green);
+  border: solid 2px;
+}
 
 /* ///////////////////////////////// mobile /////////////////////////////////  */
 .hamburger {

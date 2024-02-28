@@ -45,16 +45,22 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
             <div class="nav" id="locationNav">Our Locations</div>
             <div class="nav" id="aboutNav">About Us</div>
             <div class="user">
-                <a class="login" href="/login">
-                    <?php if (isset($user)) : ?>
-                        <img src="http://localhost:3000/<?php echo $user["profilePic"] ?>" alt="" />
-                        <div><?php echo $user["username"] ?></div>
-                    <?php else : ?>
+                <?php if (isset($user)) : ?>
+
+                    <div class="userContainner">
+                        <i class="material-icons notification">notifications</i>
+                        <img src="http://localhost:3000/<?php echo $user['profilePic'] ?>" class="navProfilePic"></img>
+                    </div>
+                <?php else : ?>
+
+                    <a class="login" href="/login">
+
                         <img src="./assets/images/default.png" alt="" />
                         <div>Login</div>
-                    <?php endif; ?>
+                    </a>
 
-                </a>
+                <?php endif; ?>
+
             </div>
         </div>
         <div class="hamburger">
