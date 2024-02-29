@@ -11,10 +11,11 @@ $routes = [
     "/services" => "src/views/services.php",
     "/apply" => "src/views/application.php",
     "/postapply" => "src/controllers/post/application.php",
-    "/dashboard/pending" => "src/views/dashboard/pending.php",
-    "/dashboard" => "src/views/dashboard/dashboard.php",
+    "/admin/dashboard/pending" => "src/views/dashboard/pending.php",
+    "/admin/dashboard" => "src/views/dashboard/dashboard.php",
     "/postapprove" => "src/controllers/post/approve.php",
     "/postreject" => "src/controllers/post/reject.php",
+    "/dashboard" => "src/views/user/dashboard/dashboard.php",
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

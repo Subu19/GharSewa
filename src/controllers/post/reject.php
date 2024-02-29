@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $statement->bindParam(":wid", $_POST['wid']);
         $statement->bindParam(":uid", $_POST['uid']);
         if ($statement->execute()) {
-            header("Location: /dashboard/pending");
+            header("Location: /admin/dashboard/pending");
             exit();
         } else {
             echo "Couldnt reject the user!";

@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
     $userid = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-    $sql = "SELECT username,profilePic FROM user where user_id = :userid";
+    $sql = "SELECT username,profilePic,isAdmin FROM user where user_id = :userid";
 
     $statement = $pdo->prepare($sql);
     $statement->bindParam(":userid", $userid);
@@ -18,6 +18,10 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+    if (!$user['isAdmin']) {
+        echo "You are not authorized to access this!";
+        exit();
+    }
     $sql2 = "SELECT first_name,last_name,service_type,profilePic,username,user.user_id from worker INNER JOIN user on user.user_id = worker.user_id where approved = 0;";
     $statement2 = $pdo->prepare($sql2);
     $statement2->execute();
@@ -63,20 +67,20 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
         <div class="hcontainner dashContainner">
             <div class="left">
                 <div class="dashNavs">
-                    <a class="dashNav" href="/dashboard">
+                    <a class="dashNav" href="/admin/dashboard">
                         <i class="material-icons">dashboard</i>
                         Dashboard
                     </a>
-                    <a class="dashNav" href="/dashboard/workers">
+                    <a class="dashNav" href="/admin/dashboard/workers">
                         <i class="material-icons">work</i>
                         Workers
                     </a>
-                    <a class="dashNav selected" href="/dashboard/pending">
+                    <a class="dashNav selected" href="/admin/dashboard/pending">
                         <i class="material-icons">perm_identity</i>
                         Pending Requests
                     </a>
                     <hr>
-                    <a class="dashNav" href="/dashboard/addadmin">
+                    <a class="dashNav" href="/admin/dashboard/addadmin">
                         <i class="material-icons">group_add</i>
                         Add Admin
                     </a>

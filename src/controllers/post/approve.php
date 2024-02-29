@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $statement = $pdo->prepare($sql);
         $statement->bindParam(":wid", $_POST['wid']);
         if ($statement->execute()) {
-            header("Location: /dashboard/pending");
+            header("Location: /admin/dashboard/pending");
             exit();
         } else {
             echo "Couldnt approve the user!";

@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
     $userid = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-    $sql = "SELECT username,profilePic,isAdmin FROM user where user_id = :userid";
+    $sql = "SELECT username,profilePic,isAdmin,isWorker FROM user where user_id = :userid";
 
     $statement = $pdo->prepare($sql);
     $statement->bindParam(":userid", $userid);
@@ -62,24 +62,36 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
         <div class="hcontainner dashContainner">
             <div class="left">
                 <div class="dashNavs">
-                    <a class="dashNav selected" href="/dashboard">
-                        <i class="material-icons">dashboard</i>
-                        Dashboard
+
+                    <a class="dashNav" href="/dashboard/messages">
+                        <i class="material-icons">message</i>
+                        Messages
                     </a>
-                    <a class="dashNav" href="/admin/dashboard/workers">
-                        <i class="material-icons">work</i>
-                        Workers
-                    </a>
-                    <a class="dashNav " href="/admin/dashboard/pending">
-                        <i class="material-icons">perm_identity</i>
-                        Pending Requests
+                    <a class="dashNav" href="/dashboard/notifications">
+                        <i class="material-icons">notifications</i>
+                        Notifications
                     </a>
                     <hr>
-                    <a class="dashNav" href="/admin/dashboard/addadmin">
-                        <i class="material-icons">group_add</i>
-                        Add Admin
+                    <a class="dashNav " href="/dashboard/profile">
+                        <i class="material-icons">account_box</i>
+                        My Profile
+                    </a>
+                    <a class="dashNav" href="/dashboard/security">
+                        <i class="material-icons">security</i>
+                        Security
                     </a>
 
+                    <?php if ($user['isWorker']) : ?>
+                        <hr>
+                        <a class="dashNav" href="/dashboard">
+                            <i class="material-icons">dashboard</i>
+                            Dashboard
+                        </a>
+                        <a class="dashNav" href="/dashboard/workprofile">
+                            <i class="material-icons">account_circle</i>
+                            My Pro Profile
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="right">

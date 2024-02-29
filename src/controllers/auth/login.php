@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['isAdmin'] = $user['isAdmin'];
             // Redirect user to dashboard or home page
             header("location: /");
             exit();

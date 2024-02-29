@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
     $userid = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-    $sql = "SELECT username,profilePic FROM user where user_id = :userid";
+    $sql = "SELECT username,profilePic,isAdmin,isWorker FROM user where user_id = :userid";
 
     $statement = $pdo->prepare($sql);
     $statement->bindParam(":userid", $userid);
@@ -49,8 +49,46 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
                     <div class="userContainner">
                         <i class="material-icons notification">notifications</i>
-                        <img src="http://localhost:3000/<?php echo $user['profilePic'] ?>" class="navProfilePic"></img>
+                        <img onclick="document.getElementById('profileMenu').classList.toggle('hideProfileMenu')" src="http://localhost:3000/<?php echo $user['profilePic'] ?>" id="navProfilePic" class="navProfilePic"></img>
+                        <div class="profileMenu hideProfileMenu" id="profileMenu">
+                            <div class="profileTag">
+                                @<?php echo $user['username'] ?>
+                            </div>
+                            <hr>
+                            <a class="pmenu" href="/dashboard">
+                                <i class="material-icons">dashboard</i>
+                                Dashboard
+                            </a>
+                            <a class="pmenu" href="/dashboard/profile">
+                                <i class="material-icons">account_box</i>
+                                My Profile
+                            </a>
+                            <a class="pmenu" href="/dashboard/messages">
+                                <i class="material-icons">message</i>
+                                Messages
+                            </a>
+                            <?php if ($user['isAdmin']) : ?>
+                                <hr>
+                                <a class="pmenu" href="/admin/dashboard">
+                                    <i class="material-icons">developer_board</i>
+                                    Admin Dashboard
+                                </a>
+                            <?php endif; ?>
+                            <hr>
+                            <a class="pmenu logout" href="/logout">
+                                <i class="material-icons">logout</i>
+                                Logout
+                            </a>
+                        </div>
                     </div>
+                    <script>
+                        document.addEventListener("click", () => {
+                            const element = document.getElementById('profileMenu');
+                            if (!element.classList.contains("hideProfileMenu") && !event.target.matches("#navProfilePic")) {
+                                element.classList.add("hideProfileMenu");
+                            }
+                        })
+                    </script>
                 <?php else : ?>
 
                     <a class="login" href="/login">
@@ -72,4 +110,5 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
             </svg>
         </div>
     </div>
+
 </div>
