@@ -1,0 +1,58 @@
+.navbar {
+  position: relative;
+}
+
+.dashContainner {
+  margin-top: 30px;
+  gap: 20px;
+}
+.left {
+  border-radius: 10px;
+  border: solid rgba(219, 219, 219, 0.624) 2px;
+  min-height: 70vh;
+  min-width: 200px;
+  overflow: hidden;
+}
+.right {
+  flex: 1;
+  border-radius: 10px;
+  border: solid rgba(219, 219, 219, 0.624) 2px;
+}
+.dashNavs {
+  display: flex;
+  flex-direction: column;
+}
+.dashNav {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.dashNav:hover {
+  background-color: rgb(235, 235, 235);
+}
+.selected {
+  background-color: var(--green);
+}
+.userBanner {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--black);
+  border: solid rgba(219, 219, 219, 0.624) 2px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.userpfp {
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: solid black 5px;
+}
+hr {
+  border-color: rgba(219, 219, 219, 0.624);
+  width: 100%;
+}

@@ -1,0 +1,111 @@
+.pendingContainner {
+  padding: 10px;
+}
+.userbox {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 10px;
+  border: solid rgb(211, 211, 211) 2px;
+  border-radius: 10px;
+}
+.userImage {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.userImage2 {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  max-width: 200px;
+  border: solid rgb(217, 217, 217) 2px;
+  border-radius: 10px;
+}
+
+.fullname {
+  font-weight: bold;
+}
+.username {
+  color: grey;
+  font-size: 15px;
+}
+.username::before {
+  content: "@";
+}
+.serviceType {
+  background-color: rgb(0, 0, 0);
+  border-radius: 20px;
+  color: white;
+  padding: 3px 10px 3px 10px;
+  width: fit-content;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.st-big {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  font-size: 18px;
+}
+.btn {
+  margin-top: 10px;
+  padding: 5px;
+}
+.button {
+  display: flex;
+}
+.input {
+  padding: 10px;
+  font-size: 18px;
+}
+.title {
+  margin-bottom: 8px;
+}
+.userdetails {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.textarea {
+  font-size: 18px;
+  padding: 10px;
+  font-family: inherit;
+  width: 80%;
+  min-height: 200px;
+}
+.detail-wide {
+  width: 100%;
+}
+.document {
+  aspect-ratio: 16/9;
+  width: 50%;
+  height: auto;
+}
+.buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.reject {
+  background-color: crimson;
+  color: white;
+}
+.button2 {
+  padding: 10px;
+  width: 100px;
+  border: none;
+  border-radius: 7px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.approve {
+  background-color: var(--green);
+  color: white;
+}
+.button2:hover {
+  scale: 1.06;
+  filter: brightness(0.8);
+}

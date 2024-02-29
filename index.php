@@ -10,11 +10,14 @@ $routes = [
     "/404" => "src/views/404.php",
     "/services" => "src/views/services.php",
     "/apply" => "src/views/application.php",
-    "/postapply" => "src/controllers/post/application.php"
+    "/postapply" => "src/controllers/post/application.php",
+    "/dashboard/pending" => "src/views/dashboard/pending.php",
+    "/dashboard" => "src/views/dashboard/dashboard.php",
+    "/postapprove" => "src/controllers/post/approve.php",
+    "/postreject" => "src/controllers/post/reject.php",
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
-
 if (strpos($uri, "/uploads/") === 0) {
     // Serve the file directly
     $filePath = __DIR__ . $uri;
