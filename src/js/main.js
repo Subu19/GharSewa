@@ -19,3 +19,12 @@ const movileNavBar = document.getElementsByClassName("mobileNavbar")[0];
 function toggleNavBar() {
   movileNavBar.classList.toggle("hideNavBar");
 }
+function preview(input, previewId) {
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    var preview = document.getElementById(previewId);
+    preview.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}

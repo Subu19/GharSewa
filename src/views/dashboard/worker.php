@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
         echo "You are not authorized to access this!";
         exit();
     }
-    $sql2 = "SELECT first_name,last_name,service_type,profilePic,username,user.user_id from worker INNER JOIN user on user.user_id = worker.user_id where approved = 0;";
+    $sql2 = "SELECT first_name,last_name,service_type,profilePic,username,user.user_id from worker INNER JOIN user on user.user_id = worker.user_id where approved = 1;";
     $statement2 = $pdo->prepare($sql2);
     $statement2->execute();
 }
@@ -60,11 +60,11 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                         <i class="material-icons">dashboard</i>
                         Dashboard
                     </a>
-                    <a class="dashNav" href="/admin/dashboard/workers">
+                    <a class="dashNav selected" href="/admin/dashboard/workers">
                         <i class="material-icons">work</i>
                         Workers
                     </a>
-                    <a class="dashNav selected" href="/admin/dashboard/pending">
+                    <a class="dashNav " href="/admin/dashboard/pending">
                         <i class="material-icons">perm_identity</i>
                         Pending Requests
                     </a>
@@ -149,25 +149,6 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             <?php endif; ?>
 
                         <?php endwhile; ?>
-                        <div class="break"></div>
-                        <div class="buttons">
-                            <form action="/postreject" method="post">
-                                <input type="text" hidden name="wid" value="<?php echo $worker["worker_id"] ?>">
-                                <input type="text" hidden name="uid" value="<?php echo $worker["user_id"] ?>">
-
-                                <button class="reject button2">
-                                    Reject
-                                </button>
-                            </form>
-                            <form action="/postapprove" method="post">
-                                <input type="text" hidden name="wid" value="<?php echo $worker["worker_id"] ?>">
-                                <input type="text" hidden name="uid" value="<?php echo $worker["user_id"] ?>">
-                                <button class="approve button2">
-                                    Approve
-                                </button>
-                            </form>
-
-                        </div>
                     </div>
 
                 <?php else : ?>
@@ -184,7 +165,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                                 <div class="serviceType">
                                     <?php echo $row["service_type"] ?>
                                 </div>
-                                <a class="button" href="/admin/dashboard/pending?id=<?php echo $row['user_id'] ?>">
+                                <a class="button" href="/admin/dashboard/workers?id=<?php echo $row['user_id'] ?>">
                                     <button class="btn">View</button>
                                 </a>
 

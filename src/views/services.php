@@ -14,6 +14,13 @@
 
 <body>
     <?php include "src/views/components/navbar.php" ?>
+    <?php
+    require_once("src/database/connect.php");
+    $sql = "SELECT worker_id,first_name,last_name,service_type,cover_image from worker INNER JOIN user on user.user_id = worker.user_id where worker.approved =1;";
+    $stmnt = $pdo->prepare($sql);
+    $stmnt->execute();
+
+    ?>
     <div class="upperspace"></div>
     <div class="wrapper">
         <div class="hcontainner">
@@ -65,91 +72,22 @@
             <div class="content">
                 <div class="title">Plumber near you</div>
                 <div class="hcontainner cards">
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
+                    <?php while ($row = $stmnt->fetch(PDO::FETCH_ASSOC)) : ?>
+                        <a class="card" href="/worker?id=<?php echo $row['worker_id'] ?>">
+                            <img src="<?php echo $row['cover_image'] ?>" alt="" class="card-img">
+                            <div class="card-title"><?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?></div>
+                            <div class="card-details">
+                                <div class="card-tag"><?php echo $row['service_type'] ?></div>
+                                <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
+                            </div>
+                            <div class="card-footer">
+                                <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
+                                2.5km away
+                            </div>
+                        </a>
+                    <?php endwhile; ?>
 
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/images/handyman.png" alt="" class="card-img">
-                        <div class="card-title">Ram Bahadur</div>
-                        <div class="card-details">
-                            <div class="card-tag">Plumber</div>
-                            <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
-                        </div>
-                        <div class="card-footer">
-                            <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                            2.5km away
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

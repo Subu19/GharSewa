@@ -12,10 +12,14 @@ $routes = [
     "/apply" => "src/views/application.php",
     "/postapply" => "src/controllers/post/application.php",
     "/admin/dashboard/pending" => "src/views/dashboard/pending.php",
+    "/admin/dashboard/workers" => "src/views/dashboard/worker.php",
     "/admin/dashboard" => "src/views/dashboard/dashboard.php",
     "/postapprove" => "src/controllers/post/approve.php",
     "/postreject" => "src/controllers/post/reject.php",
     "/dashboard" => "src/views/user/dashboard/dashboard.php",
+    "/dashboard/workprofile" => "src/views/user/dashboard/proProfile.php",
+    "/update-pro-profile" => "src/controllers/post/updateProProfile.php",
+    "/logout" => "src/views/logout.php"
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

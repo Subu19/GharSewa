@@ -18,10 +18,6 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
-    if (!$user['isAdmin']) {
-        echo "You are not authorized to access this!";
-        exit();
-    }
 }
 
 ?>
@@ -41,19 +37,8 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="wrapper">
-            <div class="logoContainner">
-                <img class="logo" id="logo" src="/assets/svgs/logoWide.svg" alt="" />
-            </div>
-            <div class="user">
-                <div class="userContainner">
-                    <i class="material-icons notification">notifications</i>
-                    <img src="http://localhost:3000/<?php echo $user['profilePic'] ?>" class="navProfilePic"></img>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "./src/views/components/navbarDashboard.php" ?>
+
     <div class="wrapper">
         <div class="userBanner">
             <img src="http://localhost:3000/<?php echo $user['profilePic'] ?>" class="userpfp" alt="">

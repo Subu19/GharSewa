@@ -99,14 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->execute();
 
         //registe new worker
-        $sql2 = "INSERT INTO worker(user_id,service_type,description,status,completed_jobs,work_time_start,work_time_end,working_days,identity_verify,document_verify,background_check)
-         VALUES(:user_id,:service_type,:description,:status,:completed_jobs,:work_time_start,:work_time_end,:working_days,:identity_verify,:document_verify,:background_check);";
+        $sql2 = "INSERT INTO worker(user_id,service_type,description,completed_jobs,identity_verify,document_verify,background_check)
+         VALUES(:user_id,:service_type,:description,:completed_jobs,:identity_verify,:document_verify,:background_check);";
         $statement2 = $pdo->prepare($sql2);
-        $status = "0";
         $completed_jobs = "0";
-        $work_time_start = "0";
-        $work_time_end = "0";
-        $working_days = "0";
         $identity_verify = 0;
         $document_verify = 0;
         $background_check = 0;
@@ -114,16 +110,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement2->bindParam(":user_id", $userid);
         $statement2->bindParam(":service_type", $serviceType);
         $statement2->bindParam(":description", $aboutMe);
-        $statement2->bindParam(":status", $status);
         $statement2->bindParam(":completed_jobs", $completed_jobs);
-        $statement2->bindParam(":work_time_start", $work_time_start);
-        $statement2->bindParam(":work_time_end", $work_time_end);
-        $statement2->bindParam(":working_days", $working_days);
         $statement2->bindParam(":identity_verify", $identity_verify);
         $statement2->bindParam(":document_verify", $document_verify);
         $statement2->bindParam(":background_check", $background_check);
 
         $statement2->execute();
+
+
+
 
         header("Location: /services");
     } else {

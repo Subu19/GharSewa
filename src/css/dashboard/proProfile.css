@@ -1,0 +1,52 @@
+.updateform {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.title {
+  font-weight: bold;
+}
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.checkbox {
+  margin-right: 10px;
+}
+.checkboxInput {
+  accent-color: blue;
+  scale: 1.5;
+  cursor: pointer;
+}
+.coverImage {
+  width: 50%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border: solid rgb(223, 223, 223) 2px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.132) 4px 4px 20px;
+  background-color: rgb(225, 225, 225);
+}
+.btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: transparent;
+  color: black;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: solid black;
+}
+.btn-primary {
+  width: 100%;
+  font-size: 15px;
+  transition: 0.2s;
+}
+.btn-primary:hover {
+  filter: brightness(0.7);
+}
