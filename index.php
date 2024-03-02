@@ -19,7 +19,8 @@ $routes = [
     "/dashboard" => "src/views/user/dashboard/dashboard.php",
     "/dashboard/workprofile" => "src/views/user/dashboard/proProfile.php",
     "/update-pro-profile" => "src/controllers/post/updateProProfile.php",
-    "/logout" => "src/views/logout.php"
+    "/logout" => "src/views/logout.php",
+    "/worker" => "src/views/worker.php"
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

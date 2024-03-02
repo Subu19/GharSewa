@@ -32,19 +32,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $citizenshipBackName = basename($_FILES["citizenship_back"]["name"]);
     $citizenshipBackTargetPath = $targetDir . "citizenship/" . uniqid() . $citizenshipBackName;
 
-    // Process certificate uploads
+    // Check if certificates were uploaded
     if (!empty($_FILES["certificates"]["name"]) && is_array($_FILES["certificates"]["name"])) {
+        echo "Found multiple files!";
         foreach ($_FILES["certificates"]["name"] as $key => $certificateName) {
             $certificateTmpName = $_FILES["certificates"]["tmp_name"][$key];
             $certificateFileName = basename($certificateName);
-            $certificateTargetPath = $targetDir . "certificates/" . $certificateFileName;
+            $certificateTargetPath = $targetDir . "certificates/" . uniqid() . "_" . $certificateFileName;
 
             if (move_uploaded_file($certificateTmpName, $certificateTargetPath)) {
                 // File uploaded successfully
-                $sql = "INSERT INTO documents(type, url, user_id) VALUES(:type,:url,:user_id)";
+                $sql = "INSERT INTO documents(type, url, user_id) VALUES(:type, :url, :user_id)";
                 $statement = $pdo->prepare($sql);
-                $statement->bindParam(":type", "CERTIFICATE");
-                $statement->bindParam(":url", $certificateTargetPath);
+                $type = "CERTIFICATE";
+                $statement->bindParam(':type', $type);
+                $statement->bindParam(':url', $certificateTargetPath);
                 $statement->bindParam(":user_id", $userid);
                 $statement->execute();
             } else {
@@ -53,13 +55,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     } elseif (!empty($_FILES["certificates"]["name"])) {
+        echo "Found one file!";
+        // If only one certificate was uploaded
         $certificateTmpName = $_FILES["certificates"]["tmp_name"];
         $certificateFileName = basename($_FILES["certificates"]["name"]);
-        $certificateTargetPath = $targetDir . "certificates/" . uniqid() . $certificateFileName;
+        $certificateTargetPath = $targetDir . "certificates/" . uniqid() . "_" . $certificateFileName;
 
         if (move_uploaded_file($certificateTmpName, $certificateTargetPath)) {
             // File uploaded successfully
-            $sql = "INSERT INTO documents(type, url, user_id) VALUES(:type,:url,:user_id)";
+            $sql = "INSERT INTO documents(type, url, user_id) VALUES(:type, :url, :user_id)";
             $statement = $pdo->prepare($sql);
             $type = "CERTIFICATE";
             $statement->bindParam(':type', $type);
@@ -68,9 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $statement->execute();
         } else {
             // Error occurred while uploading certificate file
-            echo "Sorry, there was an error uploading one of your certificate files.";
+            echo "Sorry, there was an error uploading your certificate file.";
         }
     }
+
 
     // Move files to the uploads directory
     if (

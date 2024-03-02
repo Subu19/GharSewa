@@ -50,3 +50,23 @@
 .btn-primary:hover {
   filter: brightness(0.7);
 }
+.skillContainner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.skill {
+  display: flex;
+  gap: 20px;
+}
+.skill input {
+  flex: 1;
+}
+.delete {
+  max-width: 50px;
+  margin: 0px;
+  border: solid black 1px;
+  border-radius: 2px;
+  flex: 1;
+  height: auto;
+}

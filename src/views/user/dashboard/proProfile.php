@@ -109,7 +109,8 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             <?php echo $worker['service_type'] ?>
                         </div>
                         <div class="break"></div>
-                        <form action="/update-pro-profile" method="post" class="updateform" enctype="multipart/form-data">
+                        <form onsubmit="return handleProfileSubmit()" action="/update-pro-profile" method="post" class="updateform" enctype="multipart/form-data">
+
                             <div class="detail">
                                 <div class="title">Cover Image:</div>
                                 <img id="coverImagePreview" src="http://localhost:3000/<?php echo $worker['cover_image'] ?>" alt="" class="coverImage">
@@ -120,6 +121,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             </div>
 
                             <div class="break"></div>
+
                             <div class="detail-wide">
                                 <div class="title">Status: </div>
                                 <select class="input" name="status" id="">
@@ -128,10 +130,12 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                                     <option value="Unavailable" <?php if ($worker['status'] == 'Unavailable') echo "selected" ?>>Unavailable</option>
                                 </select>
                             </div>
+
                             <div class="detail-wide">
                                 <div class="title">Working Hours: (10AM to 4PM) </div>
                                 <input name="work_time_start" type="text" class="input" value="<?php echo $worker["work_time_start"] ?>">&nbsp;&nbsp; to &nbsp;&nbsp; <input name="work_time_end" value="<?php echo $worker["work_time_end"] ?>" type="text" class="input">
                             </div>
+
                             <div class="detail">
                                 <div class="title">Working Days:</div>
                                 <div class="checkboxes">
@@ -160,16 +164,37 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                                     <div class="checkbox">
                                         <input type="checkbox" class="checkboxInput" name="saturday" <?php if ($worker['saturday']) echo "checked" ?>> Saturday
                                     </div>
-
                                 </div>
-
                             </div>
+
                             <div class="detail-wide">
                                 <div class="title">About Me:</div>
                                 <textarea name="aboutme" class="textarea"><?php echo $worker["description"] ?></textarea>
                             </div>
 
-                            <button class="btn-primary">Update Profile</button>
+                            <div class="detail-wide">
+                                <div class="title">My Skills/Qualifications:</div>
+                                <input type="text" name="skills" hidden id="skills">
+                                <div class="skillContainner" id="skillContainner">
+                                    <?php
+                                    if ($worker['qualifications']) {
+                                        $data = json_decode($worker['qualifications']);
+                                        if ($data !== null) {
+                                            foreach ($data as $string) {
+                                                // Echo HTML for each string
+                                                echo '<div class="skill">';
+                                                echo '<input type="text" class="input qualification" value="' . $string . '">';
+                                                echo '<button type="button" class="btn delete" onclick="deleteSkill(this)">❌</button>';
+                                                echo '</div>';
+                                            }
+                                        }
+                                    }
+
+                                    ?>
+                                </div>
+                                <button type="button" class="btn" onclick="addMoreSkill()">Add More</button>
+                            </div>
+                            <button class="btn-primary" type="submit">Update Profile</button>
 
                         </form>
 
@@ -219,6 +244,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
         </div>
     </div>
     <script src="/src/js/main.js"></script>
+    <script src="/src/js/dashboard/proProfile.js"></script>
 </body>
 
 </html>

@@ -59,16 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $friday = isset($_POST['friday']) ? '1' : '0';
     $saturday = isset($_POST['saturday']) ? '1' : '0';
     $aboutme = $_POST['aboutme'];
+    $qualifications = isset($_POST['skills']) ? $_POST['skills'] : "[]";
     $workerid = $worker['worker_id'];
 
     // Update worker details
-    $sql2 = "UPDATE worker SET cover_image = :cover_image, status = :status, work_time_start = :work_time_start, work_time_end = :work_time_end, description = :aboutme WHERE worker_id = :worker_id;";
+    $sql2 = "UPDATE worker SET qualifications = :qualifications, cover_image = :cover_image, status = :status, work_time_start = :work_time_start, work_time_end = :work_time_end, description = :aboutme WHERE worker_id = :worker_id;";
     $statement2 = $pdo->prepare($sql2);
     $statement2->bindParam(":cover_image", $coverImage);
     $statement2->bindParam(":status", $status);
     $statement2->bindParam(":work_time_start", $work_time_start);
     $statement2->bindParam(":work_time_end", $work_time_end);
     $statement2->bindParam(":aboutme", $aboutme);
+    $statement2->bindParam(":qualifications", $qualifications);
     $statement2->bindParam(":worker_id", $workerid);
     $statement2->execute();
 

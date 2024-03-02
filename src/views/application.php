@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
             <input type="file" name="resume">
             <hr class="takespace">
             <label for="certificates" class="label takespace">Upload your achievements</label>
-            <input type="file" name="certificates" multiple>
+            <input type="file" name="certificates[]" accept="image/*" multiple>
             <hr class="takespace">
             <label for="citizenship_front" class="label takespace">Upload Citizenship</label>
 
@@ -127,21 +127,6 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                 alert("Please upload both front and back sides of your citizenship.");
                 return false;
             }
-
-
-
-            return true;
-
-            // Validate certificates file types
-            if (certificates.length > 0) {
-                for (var i = 0; i < certificates.length; i++) {
-                    if (!allowedExtensions.exec(certificates[i].name)) {
-                        alert('Invalid file type for certificates. Please upload PDF files only.');
-                        return false;
-                    }
-                }
-            }
-
             return true;
         }
     </script>

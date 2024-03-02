@@ -67,6 +67,7 @@ hr {
 .input {
   padding: 10px;
   font-size: 18px;
+  color: var(--black);
 }
 .title {
   margin-bottom: 8px;
@@ -77,6 +78,7 @@ hr {
   font-family: inherit;
   width: 80%;
   min-height: 200px;
+  color: var(--black);
 }
 .detail-wide {
   width: 100%;
@@ -111,6 +113,8 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 18px;
 }
