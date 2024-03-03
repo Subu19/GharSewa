@@ -16,7 +16,7 @@
     <?php include "src/views/components/navbar.php" ?>
     <?php
     require_once("src/database/connect.php");
-    $sql = "SELECT worker_id,first_name,last_name,service_type,cover_image from worker INNER JOIN user on user.user_id = worker.user_id where worker.approved =1;";
+    $sql = "SELECT worker_id,first_name,last_name,service_type,cover_image,map_lon,map_lat from worker INNER JOIN user on user.user_id = worker.user_id where worker.approved =1;";
     $stmnt = $pdo->prepare($sql);
     $stmnt->execute();
 
@@ -82,7 +82,11 @@
                             </div>
                             <div class="card-footer">
                                 <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">
-                                2.5km away
+                                <?php
+                                echo isset($user['map_lon'], $user['map_lat'], $row['map_lon'], $row['map_lat'])
+                                    ? number_format(calculateDistance($user['map_lat'], $user['map_lon'], $row['map_lat'], $row['map_lon']), 2) . " km"
+                                    : "unknown";
+                                ?>
                             </div>
                         </a>
                     <?php endwhile; ?>

@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
     $userid = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-    $sql = "SELECT username,profilePic,isAdmin,isWorker FROM user where user_id = :userid";
+    $sql = "SELECT username,profilePic,isAdmin,isWorker,map_lon,map_lat FROM user where user_id = :userid";
 
     $statement = $pdo->prepare($sql);
     $statement->bindParam(":userid", $userid);

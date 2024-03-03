@@ -1,0 +1,36 @@
+.profileContainner {
+  padding: 20px;
+}
+.bold {
+  font-weight: bold;
+}
+.coordinates {
+  display: flex;
+  gap: 20px;
+}
+.btn {
+  background-color: transparent;
+  border: black solid 2px;
+  color: black;
+  transition: 0.2s;
+}
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+.btn-primary {
+  width: 100%;
+  transition: 0.2s;
+}
+.btn-primary:hover {
+  filter: brightness(0.5);
+}
+.btn-none {
+  cursor: pointer;
+}
+#map {
+  margin-top: 20px;
+  display: none;
+  height: 400px; /* The height is 400 pixels */
+  width: 100%; /* The width is the width of the web page */
+}

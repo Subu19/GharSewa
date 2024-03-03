@@ -182,3 +182,206 @@ hr {
 .controller .selected {
   background-color: var(--green);
 }
+
+/* ////////////////////// REVIEW ////////////////////////  */
+
+.reviews {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  gap: 20px;
+}
+
+.reviewContainner {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+/* .reviewContainner:nth-child(even) {
+  flex-flow: row-reverse;
+} */
+.rImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.review {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: rgb(199, 199, 199) -5px 5px 10px;
+  padding: 20px 10px 20px 10px;
+  border: solid rgb(222, 222, 222) 1px;
+  max-width: 800px;
+}
+.rUsername {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--black);
+}
+.review::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 40%;
+  transform: translateY(-50%);
+  /* margin-left: -5px; */
+  border-width: 15px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+  transform: rotate(90deg);
+  z-index: 1;
+}
+/* .reviewContainner:nth-child(even) .review {
+  box-shadow: rgb(199, 199, 199) 5px 5px 10px;
+}
+.reviewContainner:nth-child(even) .review::before {
+  content: "";
+  position: absolute;
+  right: -25px;
+  left: auto;
+  top: 40%;
+  transform: translateY(-50%) rotate(270deg);
+  border-width: 15px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+  z-index: 1;
+} */
+.reviewsForm {
+  margin-top: 30px;
+  box-shadow: rgb(199, 199, 199) 0px 0px 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.input {
+  padding: 10px;
+  font-size: 18px;
+  color: var(--black);
+}
+.textarea {
+  font-size: 18px;
+  padding: 10px;
+  font-family: inherit;
+  width: auto;
+  height: 100px;
+  color: var(--black);
+  border-radius: 7px;
+}
+.btn {
+  min-width: 100px;
+  margin-top: 20px;
+}
+.btn-transparent {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  border: solid black 2px;
+}
+.btn-transparent:hover {
+  color: rgb(0, 0, 0);
+  background-color: var(--green);
+}
+.rating {
+  display: inline-block;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.rating label:before {
+  content: "\2605";
+  font-size: 50px;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffa600;
+
+  transition: color 0.2s;
+}
+
+.rating input:checked ~ label {
+  animation: starAnimation 0.8s ease-out;
+}
+.avgContainner {
+  font-size: 20px;
+}
+.avg {
+  color: #ffa600;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.avg::after {
+  content: "\2605";
+  font-size: 30px;
+}
+
+/* /// rating 2    */
+.rating2 {
+  display: inline-block;
+}
+
+.rating2 input {
+  display: none;
+}
+
+.rating2 label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.rating2 label:before {
+  content: "\2605";
+  font-size: 30px;
+}
+
+.rating2 input:checked ~ label {
+  animation: starAnimation 0.8s ease-out;
+  color: #ffa600;
+}
+
+.ReviewTitle {
+  font-size: 30px;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.seperator {
+  margin-top: 100px;
+}
+
+@keyframes starAnimation {
+  0% {
+    scale: 1;
+  }
+  30% {
+    scale: 0.8;
+  }
+  50% {
+    scale: 1.5;
+  }
+  70% {
+    scale: 0.8;
+  }
+  100% {
+    scale: 1;
+  }
+}

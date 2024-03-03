@@ -1,5 +1,29 @@
 <?php
+//global functions
+function calculateDistance($lat1, $lon1, $lat2, $lon2)
+{
+    // Convert latitude and longitude from degrees to radians
+    $lat1 = deg2rad($lat1);
+    $lon1 = deg2rad($lon1);
+    $lat2 = deg2rad($lat2);
+    $lon2 = deg2rad($lon2);
 
+    $dlat = $lat2 - $lat1;
+    $dlon = $lon2 - $lon1;
+
+    $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2);
+    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+    // Earth radius in kilometers
+    $R = 6371;
+
+    // Calculate the distance
+    $distance = $R * $c;
+
+    return $distance;
+}
+
+////routes
 
 $routes = [
     "/" => "src/views/index.php",
@@ -18,9 +42,12 @@ $routes = [
     "/postreject" => "src/controllers/post/reject.php",
     "/dashboard" => "src/views/user/dashboard/dashboard.php",
     "/dashboard/workprofile" => "src/views/user/dashboard/proProfile.php",
+    "/dashboard/profile" => "src/views/user/dashboard/myprofile.php",
     "/update-pro-profile" => "src/controllers/post/updateProProfile.php",
     "/logout" => "src/views/logout.php",
-    "/worker" => "src/views/worker.php"
+    "/worker" => "src/views/worker.php",
+    "/postReview" => "src/controllers/post/postReview.php",
+    "/update-profile" => "src/controllers/post/updateProfile.php"
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
