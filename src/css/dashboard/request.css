@@ -1,0 +1,107 @@
+.requestContainner {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+.title {
+  font-weight: bold;
+  color: var(--balck);
+}
+.request {
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+  border-radius: 10px;
+}
+.request:hover {
+  background-color: rgb(245, 245, 245);
+}
+.profilePic {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.detail {
+  margin-top: 10px;
+}
+.userDetails {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--balck);
+}
+.requestInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.textarea {
+  resize: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  width: calc(100% - 20px);
+}
+.btn {
+  margin: 0px;
+  padding: 10px;
+}
+.btn-primary {
+  margin: 0px;
+}
+.buttons {
+  display: flex;
+  flex: 1;
+  justify-content: right;
+  gap: 20px;
+}
+.buttons .btn {
+  min-width: 100px;
+
+  flex: none;
+}
+.accept {
+  background-color: var(--green);
+}
+.reject {
+  background-color: crimson;
+}
+.mapContainner {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.457);
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  scroll-behavior: unset;
+  overflow: hidden;
+}
+.closeMap {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.show {
+  display: flex;
+}

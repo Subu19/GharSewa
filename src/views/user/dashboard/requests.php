@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
     $userid = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-    $sql = "SELECT username,profilePic,isAdmin,isWorker,map_lat,map_lon FROM user where user_id = :userid";
+    $sql = "SELECT username,profilePic,isAdmin,isWorker FROM user where user_id = :userid";
 
     $statement = $pdo->prepare($sql);
     $statement->bindParam(":userid", $userid);
@@ -18,6 +18,23 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user['isWorker']) {
+        echo "You are not a worker!";
+        exit();
+    }
+
+    $wsql = "SELECT worker_id from worker where user_id = :uid;";
+    $wstatment = $pdo->prepare($wsql);
+    $wstatment->bindParam(":uid", $userid);
+    $wstatment->execute();
+    $worker = $wstatment->fetch(PDO::FETCH_ASSOC);
+
+
+    $rsql = "SELECT profilePic,order_id,username,first_name, last_name,description,phone,map_lat,map_lon from orders inner join user on user.user_id = orders.user_id where status = 'Pending' and worker_id = :wid;";
+    $rstmnt = $pdo->prepare($rsql);
+    $rstmnt->bindParam(":wid", $worker['worker_id']);
+    $rstmnt->execute();
 }
 
 ?>
@@ -34,9 +51,8 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     <link rel="stylesheet" href="/src/css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/src/css/dashboard/main.css">
-    <link rel="stylesheet" href="/src/css/dashboard/profile.css">
+    <link rel="stylesheet" href="/src/css/dashboard/request.css">
     <?php include "src/views/components/mapApi.php" ?>
-
 </head>
 
 <body>
@@ -60,7 +76,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                         Notifications
                     </a>
                     <hr>
-                    <a class="dashNav selected" href="/dashboard/profile">
+                    <a class="dashNav " href="/dashboard/profile">
                         <i class="material-icons">account_box</i>
                         My Profile
                     </a>
@@ -75,7 +91,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             <i class="material-icons">dashboard</i>
                             Dashboard
                         </a>
-                        <a class="dashNav" href="/dashboard/requests">
+                        <a class="dashNav selected" href="/dashboard/requests">
                             <i class="material-icons">account_circle</i>
                             Requests
                         </a>
@@ -91,38 +107,53 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="right">
-                <form action="/update-profile" method="post" class="profileContainner">
-                    <div class="detail">
-                        <div class="title bold">Your Location:</div>
-
-                        <div class="coordinates">
-                            <div class="position">
-                                <div class="title">
-                                    Latitude:
+                <div class="requestContainner">
+                    <?php
+                    while ($request = $rstmnt->fetch(PDO::FETCH_ASSOC)) :
+                    ?>
+                        <div class="request">
+                            <div class="userDetails">
+                                <img src="http://localhost:3000/<?php echo $request['profilePic'] ?>" alt="" class="profilePic">
+                                <div class="username">
+                                    @<?php echo $request['username'] ?>
                                 </div>
-                                <input id="latitude" value="<?php echo $user['map_lat'] ?>" name="latitude" type="text" class="input">
+                                <div class="userInfo name">
+                                    <?php echo $request['first_name'] ?> <?php echo $request['last_name'] ?>
+                                </div>
+                                <div class="userInfo">
+                                    +977 <?php echo $request['phone'] ?>
+                                </div>
+                                <button type="button" class="btn-none" onclick="showMap(<?php echo $request['map_lat'] ?>,<?php echo $request['map_lon'] ?>)">View Address</button>
                             </div>
-                            <div class="position">
-                                <div class="title">
-                                    Longitude:
+                            <div class="requestInfo">
+                                <textarea class="textarea" disabled><?php echo $request['description'] ?> </textarea>
+                                <div class="buttons">
+                                    <form action="/postRequestAccept" method="post">
+                                        <input type="text" name="order_id" value="<?php echo $request['order_id'] ?>" hidden>
+                                        <button class="btn accept">Accept</button>
+                                    </form>
+                                    <form action="/postRequestReject" method="post">
+                                        <input type="text" name="order_id" value="<?php echo $request['order_id'] ?>" hidden>
+                                        <button class="btn reject">Reject</button>
+                                    </form>
                                 </div>
-                                <input id="longitude" value="<?php echo $user['map_lon'] ?>" name="longitude" type="text" class="input">
                             </div>
                         </div>
-                        <!--The div element for the map -->
-                        <div id="map"></div>
+                        <hr>
+                    <?php
+                    endwhile;
+                    ?>
+                </div>
+                <div id="mapContainner" class="mapContainner">
+                    <div class="closeMap" onclick="closeMap()">❌</div>
+                    <div id="map"></div>
+                </div>
 
-                        <button type="button" id="locationbtn" class="btn" onclick="setLocation()">Set Current Location</button> <button type="button" id="locationbtn" class="btn-none" onclick="viewMap()">View Map</button>
-                    </div>
-                    <div class="detail-wide">
-                        <button type="submit" class="btn-primary">Update Profile</button>
-                    </div>
-
-                </form>
             </div>
         </div>
     </div>
-    <script src="/src/js/dashboard/profile.js"></script>
+    <script src="/src/js/map.js"></script>
+    <script src="/src/js/dashboard/request.js"></script>
 </body>
 
 </html>

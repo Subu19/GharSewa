@@ -2,7 +2,7 @@
 
 if (isset($_GET['id'])) {
     require_once("src/database/connect.php");
-    $sql = "select map_lon,map_lat,qualifications,profilePic,user.user_id,service_type,description,status, work_time_end,work_time_start,identity_verify,document_verify,background_check,cover_image,first_name,last_name,username,sunday,monday,tuesday,wednesday,thursday,friday,saturday from worker inner join user on user.user_id = worker.user_id inner join working_days on worker.worker_id = working_days.worker_id where worker.worker_id = :wid;";
+    $sql = "select hourly_rate,map_lon,map_lat,qualifications,profilePic,user.user_id,service_type,description,status, work_time_end,work_time_start,identity_verify,document_verify,background_check,cover_image,first_name,last_name,username,sunday,monday,tuesday,wednesday,thursday,friday,saturday from worker inner join user on user.user_id = worker.user_id inner join working_days on worker.worker_id = working_days.worker_id where worker.worker_id = :wid;";
     $stmnt = $pdo->prepare($sql);
     $workerid = $_GET['id'];
     $stmnt->bindParam(":wid", $workerid);
@@ -51,6 +51,8 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/src/css/navbar.css">
     <link rel="stylesheet" href="/src/css/worker/main.css">
+    <link rel="stylesheet" href="/src/css/worker/hireme.css">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <?php include "src/views/components/mapApi.php" ?>
 </head>
@@ -146,6 +148,14 @@ if (isset($_GET['id'])) {
             <div class="right">
                 <div class="detailContainner">
                     <div class="title2 blue">
+                        Hourly Rate:
+                    </div>
+                    <div class="detail">
+                        <strong> Rs. <?php echo $worker['hourly_rate'] ?></strong>
+                    </div>
+                </div>
+                <div class="detailContainner">
+                    <div class="title2 blue">
                         Status
                     </div>
                     <div class="detail">
@@ -202,13 +212,27 @@ if (isset($_GET['id'])) {
                         Message Me
                     </button>
                     <hr>
-                    <button class="btn btn-primary">
-                        Hire Me
-                    </button>
+                    <?php
+                    //check order
+                    $ordersql = "SELECT * from orders where user_id = :uid and status = 'Pending' and worker_id = :wid;";
+                    $orderstmnt = $pdo->prepare($ordersql);
+                    $orderstmnt->bindParam(":uid", $userid);
+                    $orderstmnt->bindParam(":wid", $workerid);
+                    $orderstmnt->execute();
+                    if ($orderstmnt->fetch(PDO::FETCH_ASSOC)) : ?>
+                        <button class="btn btn-transparent">
+                            Pending....
+                        </button>
+                    <?php elseif ($orderstmnt->rowCount() == 0) : ?>
+                        <button class="btn btn-primary" onclick="toggleHire()">
+                            Hire Me
+                        </button>
+                    <?php endif; ?>
                 </div>
 
             </div>
         </div>
+        <?php include "src/views/components/hireme.php" ?>
         <hr class="seperator">
 
         <div class="reviews">
@@ -262,6 +286,7 @@ if (isset($_GET['id'])) {
     </div>
     <script src="/src/js/main.js"></script>
     <script src="/src/js/worker/worker.js"></script>
+
     <script src="/src/js/map.js"></script>
 </body>
 

@@ -18,3 +18,8 @@ function showSlide(slideIndex) {
     slide.style.transform = `translateX(calc(${-slideIndex} * 100%))`;
   });
 }
+
+function toggleHire() {
+  const hireForm = document.getElementById("HireForm");
+  hireForm.classList.toggle("showHire");
+}

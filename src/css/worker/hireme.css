@@ -1,0 +1,61 @@
+.hireFormContainner {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.457);
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  scroll-behavior: unset;
+  overflow: hidden;
+}
+.showHire {
+  display: flex;
+}
+.hireForm {
+  width: 500px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.hireTitle {
+  display: flex;
+}
+.hireTitle .title {
+  font-size: 25px;
+}
+.hireTitle .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.hireClose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.hireContent .title {
+  font-size: 18px;
+}
+.hireContent .detail {
+  margin-bottom: 20px;
+}
+.hireContent .btn {
+  width: 100%;
+}
+.hireContent .textarea {
+  flex: 1;
+  width: calc(100% - 30px);
+  resize: none;
+}

@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  max-width: 250px;
   border-radius: 7px;
   min-height: 500px;
   box-shadow: rgba(192, 192, 192, 0.458) 0px 0px 10px;
@@ -102,6 +103,7 @@
   gap: 5px;
   flex-direction: column;
   transition: 0.2s;
+  padding: 5px;
 }
 .card:hover {
   background-color: rgb(235, 235, 235);
@@ -120,15 +122,20 @@
   color: var(--black);
 }
 .card-details {
-  display: flex;
+  /* display: flex; */
   font-size: 13px;
   gap: 10px;
 }
 .card-tag {
-  background-color: #ffd772;
   border-radius: 10px;
   padding: 3px 8px 2px 8px;
   font-size: 12px;
+  width: fit-content;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .card-footer {
   font-size: 13px;
@@ -137,6 +144,10 @@
 .card-smallicon {
   height: 13px;
 }
+.card-rating {
+  display: flex;
+  align-items: center;
+}
 .hide {
   max-height: 0px;
   overflow: hidden;
@@ -144,4 +155,31 @@
 }
 .toggleDropdownIcon {
   transform: rotate(180deg);
+}
+
+.rating2 {
+  display: inline-block;
+
+  height: fit-content;
+}
+
+.rating2 input {
+  display: none;
+}
+
+.rating2 label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.rating2 label:before {
+  content: "\2605";
+  font-size: 20px;
+}
+
+.rating2 input:checked ~ label {
+  animation: starAnimation 0.8s ease-out;
+  color: #ffa600;
 }

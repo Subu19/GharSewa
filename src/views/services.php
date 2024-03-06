@@ -16,7 +16,7 @@
     <?php include "src/views/components/navbar.php" ?>
     <?php
     require_once("src/database/connect.php");
-    $sql = "SELECT worker_id,first_name,last_name,service_type,cover_image,map_lon,map_lat from worker INNER JOIN user on user.user_id = worker.user_id where worker.approved =1;";
+    $sql = "SELECT w.worker_id, u.first_name, u.last_name, w.service_type, w.cover_image, u.map_lon, u.map_lat, COALESCE(r.total_reviews, 0) AS total_reviews, COALESCE(r.average_rating, 0) AS average_rating FROM worker w INNER JOIN user u ON u.user_id = w.user_id LEFT JOIN (SELECT worker_id, COUNT(*) AS total_reviews, AVG(rating) AS average_rating FROM reviews GROUP BY worker_id) r ON r.worker_id = w.worker_id WHERE w.approved = 1;";
     $stmnt = $pdo->prepare($sql);
     $stmnt->execute();
 
@@ -78,7 +78,21 @@
                             <div class="card-title"><?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?></div>
                             <div class="card-details">
                                 <div class="card-tag"><?php echo $row['service_type'] ?></div>
-                                <div class="card-ratings">⭐⭐⭐⭐⭐(10)</div>
+                                <div class="card-rating">
+                                    <div class="rating2">
+                                        <input value="5" type="radio" <?php echo $row['average_rating'] >= 5 ? "checked" : "" ?>>
+                                        <label></label>
+                                        <input value="4" type="radio" <?php echo $row['average_rating'] >= 4 ? "checked" : "" ?>>
+                                        <label></label>
+                                        <input value="3" type="radio" <?php echo $row['average_rating'] >= 3 ? "checked" : "" ?>>
+                                        <label></label>
+                                        <input value="2" type="radio" <?php echo $row['average_rating'] >= 2 ? "checked" : "" ?>>
+                                        <label></label>
+                                        <input value="1" type="radio" <?php echo $row['average_rating'] >= 1 ? "checked" : "" ?>>
+                                        <label></label>
+                                    </div>
+                                    (<?php echo $row['total_reviews'] ?>)
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <img src="assets/svgs/greenLocation.svg" alt="" class="card-smallicon">

@@ -79,7 +79,15 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             <i class="material-icons">dashboard</i>
                             Dashboard
                         </a>
-                        <a class="dashNav" href="/dashboard/workprofile">
+                        <a class="dashNav" href="/dashboard/requests">
+                            <i class="material-icons">account_circle</i>
+                            Requests
+                        </a>
+                        <a class="dashNav" href="/dashboard/active">
+                            <i class="material-icons">account_circle</i>
+                            Active
+                        </a>
+                        <a class="dashNav selected" href="/dashboard/workprofile">
                             <i class="material-icons">account_circle</i>
                             My Pro Profile
                         </a>
@@ -192,7 +200,12 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
                                     ?>
                                 </div>
+
                                 <button type="button" class="btn" onclick="addMoreSkill()">Add More</button>
+                            </div>
+                            <div class="detail-wide">
+                                <div class="title">Hourly Rate:</div>
+                                Rs. <input step=".01" type="number" class="input" name="hourly_rate" value="<?php echo $worker["hourly_rate"] ?>">
                             </div>
                             <button class="btn-primary" type="submit">Update Profile</button>
 

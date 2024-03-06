@@ -40,14 +40,21 @@ $routes = [
     "/admin/dashboard" => "src/views/dashboard/dashboard.php",
     "/postapprove" => "src/controllers/post/approve.php",
     "/postreject" => "src/controllers/post/reject.php",
+    "/posthire" => "src/controllers/post/posthire.php",
     "/dashboard" => "src/views/user/dashboard/dashboard.php",
     "/dashboard/workprofile" => "src/views/user/dashboard/proProfile.php",
     "/dashboard/profile" => "src/views/user/dashboard/myprofile.php",
+    "/dashboard/requests" => "src/views/user/dashboard/requests.php",
+    "/dashboard/active" => "src/views/user/dashboard/active.php",
+
     "/update-pro-profile" => "src/controllers/post/updateProProfile.php",
     "/logout" => "src/views/logout.php",
     "/worker" => "src/views/worker.php",
     "/postReview" => "src/controllers/post/postReview.php",
-    "/update-profile" => "src/controllers/post/updateProfile.php"
+    "/update-profile" => "src/controllers/post/updateProfile.php",
+    "/postRequestAccept" => "src/controllers/post/postRequestAccept.php",
+    "/postRequestReject" => "src/controllers/post/postRequestReject.php",
+    "/postWorkComplete" => "src/controllers/post/postWorkComplete.php",
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
