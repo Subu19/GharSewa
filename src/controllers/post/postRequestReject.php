@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $statement = $pdo->prepare($sql);
         $statement->bindParam(":oid", $_POST['order_id']);
         $statement->bindParam(":wid", $user['worker_id']);
+        sendNotification($pdo, getUserFromOrder($pdo, $_POST['order_id']), "Rejected!", "Your request was rejected by the worker! Please try someone else.", "/");
         if ($statement->execute()) {
             header("Location: /dashboard/requests");
             exit();

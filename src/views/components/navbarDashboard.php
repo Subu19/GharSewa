@@ -23,7 +23,7 @@
             <div class="user">
                 <?php if (isset($user)) : ?>
                     <div class="userContainner">
-                        <i class="material-icons notification">notifications</i>
+                        <a href="/dashboard/notifications"> <i class="material-icons notification">notifications</i></a>
                         <img onclick="document.getElementById('profileMenu').classList.toggle('hideProfileMenu')" src="http://localhost:3000/<?php echo $user['profilePic'] ?>" id="navProfilePic" class="navProfilePic"></img>
                         <div class="profileMenu hideProfileMenu" id="profileMenu">
                             <div class="profileTag">

@@ -1,38 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Simple Marker</title>
-    <!-- The callback parameter is required, so we use console.debug as a noop -->
-    <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbqCpLfM8kHaO7K_o8V4EPccNhJiMxi3Y&callback=console.debug&libraries=maps,marker&v=beta"
-    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      gmp-map {
-        height: 100%;
+      * {
+        margin: 0px;
+        padding: 0px;
       }
-
-      /* Optional: Makes the sample page fill the window. */
-      html,
       body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
+        padding: 0px;
+      }
+      .main {
+        display: none;
+        background-color: blue;
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
+      .show {
+        display: block;
+      }
+      .containner {
+        position: relative;
+        background-color: yellow;
+        height: 100vh;
+        width: 100vw;
+        margin-top: 100px;
       }
     </style>
   </head>
   <body>
-    <gmp-map
-      center="40.12150192260742,-100.45039367675781"
-      zoom="4"
-      map-id="DEMO_MAP_ID"
-    >
-      <gmp-advanced-marker
-        position="40.12150192260742,-100.45039367675781"
-        title="My location"
-      ></gmp-advanced-marker>
-    </gmp-map>
+    <div onclick="togglePopUp()">
+      <i class="material-icons">label</i>
+    </div>
+    <div class="containner">
+      <div class="main" id="main">hi</div>
+    </div>
+    <script>
+      function togglePopUp() {
+        document.getElementById("main").classList.toggle("show");
+      }
+    </script>
   </body>
 </html>

@@ -17,6 +17,21 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     $statement->execute();
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    //get notifications
+    $notifysql = "SELECT * from notification where user_id = :uid  order by time desc limit 10;";
+    $notifystat = $pdo->prepare($notifysql);
+    $notifystat->bindParam(":uid", $userid);
+    $notifystat->execute();
+
+    $unreadCount = 0;
+    $notifications = $notifystat->fetchAll();
+
+    foreach ($notifications as $n) {
+        if (!$n['read']) {
+            $unreadCount++;
+        }
+    }
 }
 
 
@@ -48,8 +63,32 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                 <?php if (isset($user)) : ?>
 
                     <div class="userContainner">
-                        <i class="material-icons notification">notifications</i>
+                        <div class="notify">
+                            <div class="unread <?php echo $unreadCount > 0 ? "" : "n-hide" ?>"><?php echo $unreadCount ?></div>
+                            <i onclick="document.getElementById('notificationPopup').classList.toggle('hideNotificationMenu')" class="material-icons notification" id="notification">notifications</i>
+                        </div>
                         <img onclick="document.getElementById('profileMenu').classList.toggle('hideProfileMenu')" src="http://localhost:3000/<?php echo $user['profilePic'] ?>" id="navProfilePic" class="navProfilePic"></img>
+
+                        <!-- //notification popup   -->
+                        <div class="notificationPopup hideNotificationMenu" id="notificationPopup">
+                            <div class="n-title notificationtitle">Notifications</div>
+                            <div class="notifications">
+                                <?php foreach ($notifications as $notification) : ?>
+                                    <a class="notificationbox <?php echo $notification['read'] ? "" : "new" ?>" href="/redirect-notification?id=<?php echo $notification['nid'] ?>">
+                                        <div class="n-heading">
+                                            <div class="n-title "><?php echo $notification['title'] ?></div>
+                                            <div class="n-time"><?php echo $notification['time'] ?></div>
+                                        </div>
+                                        <div class="n-subject">
+                                            <?php echo $notification['message'] ?>
+                                        </div>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+
+
+                        <!-- //use menu pop up  -->
                         <div class="profileMenu hideProfileMenu" id="profileMenu">
                             <div class="profileTag">
                                 @<?php echo $user['username'] ?>
@@ -84,10 +123,14 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                     <script>
                         document.addEventListener("click", () => {
                             const element = document.getElementById('profileMenu');
+                            const element2 = document.getElementById('notificationPopup');
                             if (!element.classList.contains("hideProfileMenu") && !event.target.matches("#navProfilePic")) {
                                 element.classList.add("hideProfileMenu");
                             }
-                        })
+                            if (!element2.classList.contains("hideNotificationMenu") && !event.target.matches("#notification")) {
+                                element2.classList.add("hideNotificationMenu");
+                            }
+                        });
                     </script>
                 <?php else : ?>
 

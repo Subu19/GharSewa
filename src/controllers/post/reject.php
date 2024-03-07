@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $statement->bindParam(":wid", $_POST['wid']);
         $statement->bindParam(":uid", $_POST['uid']);
         if ($statement->execute()) {
+            sendNotification($pdo, $_POST['uid'], "Rejected :(", "Your work profile was Rejected! Try again with proper documents.", "/");
+            sendNotification($pdo, getUserFromWorker($pdo, $_POST['wid']), "Rejected :(", "Your work profile was Rejected! Try again with proper documents.", "/");
             header("Location: /admin/dashboard/pending");
             exit();
         } else {

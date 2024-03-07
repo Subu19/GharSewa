@@ -197,13 +197,13 @@ if (isset($_GET['id'])) {
                     </div>
                     <div class="detail">
                         <div class="check">
-                            <?php echo $worker['identity_verify'] ? "✔️" : "❌" ?> Identify Verify
+                            <?php echo !$worker['identity_verify'] ? "✔️" : "❌" ?> Identify Verify
                         </div>
                         <div class="check">
-                            <?php echo $worker['document_verify'] ? "✔️" : "❌" ?> Document Verify
+                            <?php echo !$worker['document_verify'] ? "✔️" : "❌" ?> Document Verify
                         </div>
                         <div class="check">
-                            <?php echo $worker['background_check'] ? "✔️" : "❌" ?> Background Check
+                            <?php echo !$worker['background_check'] ? "✔️" : "❌" ?> Background Check
                         </div>
                     </div>
                 </div>
@@ -285,8 +285,8 @@ if (isset($_GET['id'])) {
 
     </div>
     <script src="/src/js/main.js"></script>
+    <script src="src/js/navbar.js"></script>
     <script src="/src/js/worker/worker.js"></script>
-
     <script src="/src/js/map.js"></script>
 </body>
 

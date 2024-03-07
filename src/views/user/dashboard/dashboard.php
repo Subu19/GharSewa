@@ -73,11 +73,11 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             Dashboard
                         </a>
                         <a class="dashNav " href="/dashboard/requests">
-                            <i class="material-icons">account_circle</i>
+                            <i class="material-icons">warning</i>
                             Requests
                         </a>
                         <a class="dashNav" href="/dashboard/active">
-                            <i class="material-icons">account_circle</i>
+                            <i class="material-icons">label</i>
                             Active
                         </a>
 
@@ -93,6 +93,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
             </div>
         </div>
     </div>
+    <script src="/src/js/main.js"></script>
 
 </body>
 

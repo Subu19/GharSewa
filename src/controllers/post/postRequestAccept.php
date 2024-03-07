@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $statement->bindParam(":oid", $_POST['order_id']);
         $statement->bindParam(":wid", $user['worker_id']);
         if ($statement->execute()) {
+
+            sendNotification($pdo, getUserFromOrder($pdo, $_POST['order_id']), "Accepted!", "Your request was accepted! Worker will arrive on the date mentioned!", "/");
             header("Location: /dashboard/requests");
             exit();
         } else {

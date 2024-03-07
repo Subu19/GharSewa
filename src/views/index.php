@@ -226,6 +226,8 @@
 
   <footer></footer>
   <script src="src/js/main.js"></script>
+  <script src="src/js/navbar.js"></script>
+
   <script src="src/js/home/home.js"></script>
 </body>
 

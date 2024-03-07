@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $statement->bindParam(":status", $status);
     $statement->bindParam(":description", $description);
     if ($statement->execute()) {
+        sendNotification($pdo, $userid, "Request Sent!", "Your request was sent. Please wait for the response from the worker!", "/worker?id=" . $workerid);
+        sendNotification($pdo, getUserFromWorker($pdo, $workerid), "New Work Request!", "Please check your request section on diashboard for more information", "/dashboard/requests");
         header("Location: /worker?id=" . $workerid);
         exit();
     } else {

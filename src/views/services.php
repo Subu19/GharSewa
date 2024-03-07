@@ -110,6 +110,7 @@
             </div>
         </div>
     </div>
+    <script src="/src/js/main.js"></script>
 
     <script src="src/js/navbar.js"></script>
     <script src="src/js/services/main.js"></script>

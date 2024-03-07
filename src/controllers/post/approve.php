@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 } else {
 
     require_once("src/database/connect.php");
-
     $userid = $_SESSION['user_id'];
     $username = $_SESSION['username'];
 }
@@ -38,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $statement4->bindParam(":wid", $_POST['wid']);
 
                 if ($statement4->execute()) {
+                    sendNotification($pdo, $worker['user_id'], "Approved!", "Your work profile was approved! Start setting up your profile!", "/dashboard/workprofile");
                     header("Location: /admin/dashboard/pending");
                     exit();
                 } else {
