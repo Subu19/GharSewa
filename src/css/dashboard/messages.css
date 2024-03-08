@@ -1,0 +1,125 @@
+.right {
+  display: flex;
+  overflow: hidden;
+}
+.dashContainner {
+  height: calc(100vh - 70px - 20px);
+  margin-top: 20px;
+}
+.messageContainner {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+.messageHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: solid rgb(212, 212, 212);
+}
+.messageHeading .title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--green);
+}
+.messageBox {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.msg-profile {
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border-radius: 50%;
+}
+.msg {
+  background-color: gray;
+  padding: 10px;
+  width: fit-content;
+}
+.me {
+  border-radius: 7px;
+  background-color: rgb(44, 118, 255);
+  color: white;
+  border-bottom-right-radius: 0px;
+  align-self: flex-end;
+}
+.other {
+  border-radius: 7px;
+  background-color: rgb(0, 164, 63);
+  color: white;
+  border-bottom-left-radius: 0px;
+}
+.messageFooter {
+  height: 50px;
+  justify-self: flex-end;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+}
+.messageFooter .input,
+.btn {
+  margin: 0px;
+}
+.messageFooter .input {
+  flex: 1;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(233, 233, 233);
+}
+.messageFooter .btn {
+  flex: 1;
+  max-width: 100px;
+  background-color: black;
+}
+/* ///////////////// dm ////////////////  */
+.dmContainner {
+  flex: 1;
+  max-width: 250px;
+  background-color: rgb(240, 240, 240);
+  border-right: solid rgb(212, 212, 212);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dms {
+  display: flex;
+  flex-direction: column;
+  flex-flow: column-reverse;
+}
+.dmUser {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: solid var(--black) 1px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--black);
+}
+
+.dmUser:hover {
+  background-color: rgb(255, 255, 255);
+}
+.dmHeading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  color: var(--black);
+  font-size: 20px;
+}
+.name {
+  font-weight: bold;
+}
+.dmOpen {
+  background-color: white;
+}

@@ -32,6 +32,17 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
             $unreadCount++;
         }
     }
+
+    //get unread messages
+    $sql = "SELECT count(*) as unread from message where isRead=0 and receiver = :uid;";
+    $statement = $pdo->prepare($sql);
+    $statement->bindParam(":uid", $userid);
+    $statement->execute();
+    $unread = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($unread['unread'] != 0) {
+        $unreadCount += $unread['unread'];
+    }
 }
 
 
@@ -73,6 +84,16 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                         <div class="notificationPopup hideNotificationMenu" id="notificationPopup">
                             <div class="n-title notificationtitle">Notifications</div>
                             <div class="notifications">
+                                <?php if ($unread['unread'] > 0) : ?>
+                                    <a class="notificationbox <?php echo $notification['read'] ? "" : "new" ?>" href="/dashboard/messages">
+                                        <div class="n-heading">
+                                            <div class="n-title "><?php echo $unread['unread'] ?> New Messages!</div>
+                                        </div>
+                                        <div class="n-subject">
+                                            Check your Dashboard! You have new Messages waiting for you.
+                                        </div>
+                                    </a>
+                                <?php endif; ?>
                                 <?php foreach ($notifications as $notification) : ?>
                                     <a class="notificationbox <?php echo $notification['read'] ? "" : "new" ?>" href="/redirect-notification?id=<?php echo $notification['nid'] ?>">
                                         <div class="n-heading">

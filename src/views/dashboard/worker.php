@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     <div class="wrapper">
         <div class="userBanner">
             <img src="http://localhost:3000/<?php echo $user['profilePic'] ?>" class="userpfp" alt="">
-            <h2>Hi <?php echo $user['username'] ?>!, This is your dashboard!</h2>
+            <h2>Hi <?php echo $user['username'] ?>!, This is your admin dashboard!</h2>
         </div>
         <div class="hcontainner dashContainner">
             <div class="left">

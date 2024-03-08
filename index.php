@@ -93,9 +93,8 @@ $getRoutes = [
     "/dashboard/workprofile" => "src/views/user/dashboard/proProfile.php",
     "/dashboard/profile" => "src/views/user/dashboard/myprofile.php",
     "/dashboard/requests" => "src/views/user/dashboard/requests.php",
-
     "/dashboard/notifications" => "src/views/user/dashboard/notifications.php",
-
+    "/dashboard/messages" => "src/views/user/dashboard/messages.php",
     "/dashboard/active" => "src/views/user/dashboard/active.php",
     "/worker" => "src/views/worker.php",
     "/logout" => "src/views/logout.php",
@@ -117,6 +116,10 @@ $postRoutes = [
     "/postRequestAccept" => "src/controllers/post/postRequestAccept.php",
     "/postRequestReject" => "src/controllers/post/postRequestReject.php",
     "/postWorkComplete" => "src/controllers/post/postWorkComplete.php",
+    "/api/postMessage" => "src/api/postMessage.php",
+    "/api/getMessage" => "src/api/getMessage.php",
+
+
 ];
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

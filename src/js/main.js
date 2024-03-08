@@ -56,3 +56,36 @@ setTimeout(() => {
     time.innerHTML = formatTimestamp(parseInt(time.innerHTML));
   });
 }, 1000);
+
+///send request
+function sendRequest(method, url, formData = null) {
+  return new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+
+    // Construct the full URL
+    var fullUrl = "http://localhost:3000/" + url;
+
+    xhr.open(method, fullUrl);
+
+    // Enable credential forwarding
+    xhr.withCredentials = true;
+
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.responseText);
+      } else {
+        reject("Request failed with status:", xhr.status);
+      }
+    };
+
+    xhr.onerror = function () {
+      reject("Request failed");
+    };
+
+    if (formData) {
+      xhr.send(formData);
+    } else {
+      xhr.send();
+    }
+  });
+}

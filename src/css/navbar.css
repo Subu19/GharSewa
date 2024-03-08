@@ -191,6 +191,7 @@ hr {
   opacity: 1;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.276) 0px 0px 20px;
+  overflow-y: auto;
 }
 .notificationPopup::before {
   content: "";

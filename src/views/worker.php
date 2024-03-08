@@ -208,9 +208,10 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <div class="buttons">
-                    <button class=" btn ">
+
+                    <a href="/dashboard/messages?id=<?php echo $worker['user_id'] ?>" class="btn">
                         Message Me
-                    </button>
+                    </a>
                     <hr>
                     <?php
                     //check order
