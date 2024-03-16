@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $hashpassword = password_hash($password, PASSWORD_DEFAULT);
 
         //prepare sql statement
-        $sql = "INSERT INTO users (first_name, last_name, username, email, phone, address, password) 
+        $sql = "INSERT INTO user (first_name, last_name, username, email, phone, address, password) 
                     VALUES (:first_name, :last_name, :username, :email, :phone, :address, :password)";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':first_name', $firstname);

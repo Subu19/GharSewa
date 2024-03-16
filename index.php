@@ -118,7 +118,7 @@ $postRoutes = [
     "/postWorkComplete" => "src/controllers/post/postWorkComplete.php",
     "/api/postMessage" => "src/api/postMessage.php",
     "/api/getMessage" => "src/api/getMessage.php",
-
+    "/api/getworkerlist" => "src/api/getWorkerList.php",
 
 ];
 

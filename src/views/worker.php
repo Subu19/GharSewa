@@ -209,9 +209,9 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="buttons">
 
-                    <a href="/dashboard/messages?id=<?php echo $worker['user_id'] ?>" class="btn">
+                    <button href="/dashboard/messages?id=<?php echo $worker['user_id'] ?>" class="btn" <?php echo isset($user) ? "" : "disabled" ?>>
                         Message Me
-                    </a>
+                    </button>
                     <hr>
                     <?php
                     //check order
@@ -225,7 +225,7 @@ if (isset($_GET['id'])) {
                             Pending....
                         </button>
                     <?php elseif ($orderstmnt->rowCount() == 0) : ?>
-                        <button class="btn btn-primary" onclick="toggleHire()">
+                        <button class="btn btn-primary" onclick="toggleHire()" <?php echo isset($user) ? "" : "disabled" ?>>
                             Hire Me
                         </button>
                     <?php endif; ?>
@@ -280,7 +280,7 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <br>
-                <button type="submit" class="btn btn-transparent">Send</button>
+                <button type="submit" class="btn btn-transparent" <?php echo isset($user) ? "" : "disabled" ?>>Send</button>
             </form>
         </div>
 

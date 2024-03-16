@@ -397,3 +397,31 @@
     font-size: 40px;
   }
 }
+
+.joinus {
+  background-color: var(--green);
+  border: none;
+  outline-offset: none;
+  padding: 15px;
+  font-weight: bold;
+  color: white;
+  border-radius: 30px;
+  width: 250px;
+  font-size: 20px;
+  transition: 0.2s;
+}
+.lastpage {
+  margin-top: 100px;
+  margin-bottom: 300px;
+}
+.lastpage .heading {
+  color: var(--blue);
+}
+.joinus:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.lastpage .wrapper {
+  max-width: 800px;
+}

@@ -25,7 +25,7 @@
     <div class="wrapper">
         <div class="hcontainner">
             <div class="search">
-                <input type="text" placeholder="Plumber near me" class="textinput radius-7">
+                <input onkeydown="updateFilter(this,1)" type="text" placeholder="Plumber near me" class="textinput radius-7">
                 <span class="searchIcon"><i class="material-icons icon" style="font-size: 40px;">search</i>
                 </span>
             </div>
@@ -44,14 +44,14 @@
                         <i class="material-icons toggleDropdownIcon">arrow_drop_down</i>
                     </div>
                     <div class="drops">
-                        <div class="dropitem">Plumber</div>
-                        <div class="dropitem">Electrician</div>
-                        <div class="dropitem">Cleaner</div>
-                        <div class="dropitem">hmmm</div>
-                        <div class="dropitem">Plumber</div>
-                        <div class="dropitem">Plumber</div>
-                        <div class="dropitem">Plumber</div>
-
+                        <div class="dropitem"><input type="checkbox" value="Plumber" class="checkbox ProFilter" onchange="updateFilter(this)">Plumber</div>
+                        <div class="dropitem"><input type="checkbox" value="Electrician" class="checkbox ProFilter" onchange="updateFilter(this)">Electrician</div>
+                        <div class="dropitem"><input type="checkbox" value="Painter" class="checkbox ProFilter" onchange="updateFilter(this)">Painter</div>
+                        <div class="dropitem"><input type="checkbox" value="Babysitter" class="checkbox ProFilter" onchange="updateFilter(this)">Babysitter</div>
+                        <div class="dropitem"><input type="checkbox" value="Cook" class="checkbox ProFilter" onchange="updateFilter(this)">Cook</div>
+                        <div class="dropitem"><input type="checkbox" value="Cleaner" class="checkbox ProFilter" onchange="updateFilter(this)">Cleaner</div>
+                        <div class="dropitem"><input type="checkbox" value="Technician" class="checkbox ProFilter" onchange="updateFilter(this)">Technician</div>
+                        <div class="dropitem"><input type="checkbox" value="Nurse" class="checkbox ProFilter" onchange="updateFilter(this)">Nurse</div>
                     </div>
                 </div>
 
@@ -61,17 +61,14 @@
                         <i class="material-icons toggleDropdownIcon">arrow_drop_down</i>
                     </div>
                     <div class="drops">
-                        <div class="dropitem">Nearest</div>
-                        <div class="dropitem">Relavent</div>
-                        <div class="dropitem">Best</div>
-                        <div class="dropitem">New Agents</div>
-
+                        <div class="dropitem"><input class="checkbox" type="radio" name="sort" onclick="sortByBestRating()">Best</div>
+                        <div class="dropitem"><input class="checkbox" type="radio" name="sort" onclick="sortByDistance()">Nearest</div>
                     </div>
                 </div>
             </div>
             <div class="content">
-                <div class="title">Plumber near you</div>
-                <div class="hcontainner cards">
+                <div class="title">Workers from your search</div>
+                <div class="hcontainner cards" id="workers">
                     <?php while ($row = $stmnt->fetch(PDO::FETCH_ASSOC)) : ?>
                         <a class="card" href="/worker?id=<?php echo $row['worker_id'] ?>">
                             <img src="<?php echo $row['cover_image'] ?>" alt="" class="card-img">

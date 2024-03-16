@@ -23,7 +23,7 @@
         </div>
         <div class="flex column margin50">
           <div class="flex center bold">New Here?</div>
-          <a class="flex center green" href="./index.html">Create New Account</a>
+          <a class="flex center green" href="./register">Create New Account</a>
         </div>
       </form>
     </div>

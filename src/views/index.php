@@ -28,7 +28,9 @@
         <div class="surfix fade-right">
           Your comfort is our job and responsiblity
         </div>
-        <button class="fade-right">Get Now!</button>
+        <a href="/services">
+          <button class="fade-right">Get Now!</button>
+        </a>
       </div>
       <div class="right">
         <img src="./assets/svgs/landingImage.svg" class="landingImage" alt="" />
@@ -220,6 +222,21 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lastpage">
+    <div class="wrapper">
+      <div class=" heading textcenter fade-up">Join US</div>
+      <div class="text textcenter fade-up">
+        Join Ghar Sewa's mission to redefine home services. Whether you're a provider or tech enthusiast, join us in revolutionizing how people connect with reliable services. Join our community today and shape the future of home service solutions.
+      </div>
+      <div class="heading textcenter">
+        <a href="/apply">
+          <button class="joinus">Become A Worker</button>
+
+        </a>
       </div>
     </div>
   </div>

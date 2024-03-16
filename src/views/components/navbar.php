@@ -2,8 +2,6 @@
 session_start();
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     // Redirect unauthorized users to the login page
-    header("location: /login");
-    exit();
 } else {
 
     require_once("src/database/connect.php");

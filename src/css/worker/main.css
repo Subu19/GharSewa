@@ -388,3 +388,6 @@ hr {
     scale: 1;
   }
 }
+button:disabled {
+  cursor: not-allowed !important;
+}

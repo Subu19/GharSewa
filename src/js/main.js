@@ -63,7 +63,13 @@ function sendRequest(method, url, formData = null) {
     var xhr = new XMLHttpRequest();
 
     // Construct the full URL
-    var fullUrl = "http://localhost:3000/" + url;
+    var fullUrl;
+    
+    if(url instanceof URL){
+      fullUrl = url.href;
+    }else{
+      fullUrl = "http://localhost:3000/" + url;
+    }
 
     xhr.open(method, fullUrl);
 
