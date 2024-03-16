@@ -64,10 +64,10 @@ function sendRequest(method, url, formData = null) {
 
     // Construct the full URL
     var fullUrl;
-    
-    if(url instanceof URL){
+
+    if (url instanceof URL) {
       fullUrl = url.href;
-    }else{
+    } else {
       fullUrl = "http://localhost:3000/" + url;
     }
 

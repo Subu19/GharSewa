@@ -20,7 +20,7 @@
 
             <input type="text" name="firstname" id="firstname" class="input" placeholder="First Name" required />
             <input type="text" name="lastname" id="lastname" class="input" placeholder="Last Name" required />
-            <input type="text" name="username" id="username" class="input" placeholder="Username" required />
+            <input onkeyup="validateUsername(this)" type="text" name="username" id="username" class="input" placeholder="Username" required />
 
             <div class="takespace"></div>
             <input type="email" name="email" id="email" class="input" placeholder="email" required />
@@ -47,8 +47,17 @@
             <button class="btn-primary takespace" type="submit">Register</button>
         </form>
     </div>
-
+    <script src="/src/js/main.js"></script>
     <script>
+        function validateUsername(e) {
+            sendRequest("POST", "api/validateUsername?username=" + e.value).then((res) => {
+                if (res == "matched") {
+                    document.getElementById("username").classList.add("invalid");
+                } else {
+                    document.getElementById("username").classList.remove("invalid");
+                }
+            }).catch(err => console.log(err));
+        }
         document.getElementById("password").addEventListener("input", function() {
             var password = document.getElementById("password").value;
             var vLength = document.getElementById("vlength");

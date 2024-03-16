@@ -44,6 +44,10 @@ form {
   font-size: 18px;
   padding: 15px;
 }
+
+.invalid {
+  background-color: rgb(255, 127, 127);
+}
 /* //////////////////////////// application /////////////////  */
 .select {
   height: auto;

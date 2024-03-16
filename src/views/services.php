@@ -25,7 +25,7 @@
     <div class="wrapper">
         <div class="hcontainner">
             <div class="search">
-                <input onkeydown="updateFilter(this,1)" type="text" placeholder="Plumber near me" class="textinput radius-7">
+                <input onkeyup="updateFilter(this,1)" type="text" placeholder="Plumber near me" class="textinput radius-7">
                 <span class="searchIcon"><i class="material-icons icon" style="font-size: 40px;">search</i>
                 </span>
             </div>

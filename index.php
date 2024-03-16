@@ -99,6 +99,7 @@ $getRoutes = [
     "/worker" => "src/views/worker.php",
     "/logout" => "src/views/logout.php",
     "/redirect-notification" => "src/controllers/markasread.php",
+    "/locations" => "src/views/location.php",
 
 ];
 
@@ -119,6 +120,7 @@ $postRoutes = [
     "/api/postMessage" => "src/api/postMessage.php",
     "/api/getMessage" => "src/api/getMessage.php",
     "/api/getworkerlist" => "src/api/getWorkerList.php",
+    "/api/validateUsername" => "src/api/validateUsername.php",
 
 ];
 
