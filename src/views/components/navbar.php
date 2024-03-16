@@ -66,7 +66,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
             <a href="/services">
                 <div class="nav" id="serviceNav">Services</div>
             </a>
-            <div class="nav" id="locationNav">Our Locations</div>
+            <a href="/locations" class=" nav" id="locationNav">Our Locations</a>
             <div class="nav" id="aboutNav">About Us</div>
             <div class="user">
                 <?php if (isset($user)) : ?>

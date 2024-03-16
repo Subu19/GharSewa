@@ -1,0 +1,33 @@
+.heading {
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--green);
+}
+.textcenter {
+  text-align: center;
+}
+.wave1 {
+  position: absolute;
+  z-index: -1;
+}
+.locationPage {
+  padding-top: 150px;
+}
+.image {
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.containner {
+  display: flex;
+  width: 100%;
+}
+.text {
+  margin-top: 10px;
+}
+#map {
+  margin-top: 100px;
+}
+#map {
+  height: 600px;
+}
